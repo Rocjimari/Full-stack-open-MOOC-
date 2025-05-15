@@ -9,11 +9,11 @@ const Button = ({ handleClick, text }) => (
 
 const StatisticLine  = (props) => {
   return (
-    <div>
-      <p>
-         {props.text} {props.value} 
-      </p>
-    </div>
+    <tr>
+      <td>{props.text}</td>
+      <td>{props.value}</td>
+    </tr>
+  
   )
 } 
 const Statistics = ({good, neutral,bad}) => {
