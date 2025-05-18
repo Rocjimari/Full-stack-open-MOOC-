@@ -93,17 +93,16 @@ const App = () => {
 
   const [votes, setVotes] = useState(Array(anecdotes.length).fill(0))
   
-
   const handleVotes = () => {
-    const copy = { ...votes }
+    const copy = [ ...votes ]
     copy[selected] += 1
     setVotes(copy)
     console.log('Anecdota',selected,'valor', copy[selected])  
   }
   
-  
-
-  
+  const maxVotes = Math.max(...votes)
+  const maxIndex = votes.indexOf(maxVotes)
+  console.log('anecdota',maxIndex, 'votos',maxVotes)
  
 
   return (
@@ -115,10 +114,14 @@ const App = () => {
       <Button handleClick={handleBadClick} text='Bad' />
       <h1>Statistics</h1>
       <Statistics good={good} neutral={neutral} bad={bad} />
+      <h1>Anecdote of the day</h1>
       <p>{anecdotes[selected]}</p>
       <p>Has {votes[selected]} votes </p>
       <Button handleClick={handleVotes} text ='vote' /> 
       <Button handleClick={handleRandomClick} text ='next anecdote' /> 
+      <h1>Anecdote with most votes</h1>
+      <p>{anecdotes[maxIndex]}</p>
+      <p>Has {votes[maxIndex]} votes </p>
       
     
       
