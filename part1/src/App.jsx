@@ -88,7 +88,23 @@ const App = () => {
     console.log('actualizacion selected',selected)
 
   }
+
+
+
+  const [votes, setVotes] = useState(Array(anecdotes.length).fill(0))
   
+
+  const handleVotes = () => {
+    const copy = { ...votes }
+    copy[selected] += 1
+    setVotes(copy)
+    console.log('Anecdota',selected,'valor', copy[selected])  
+  }
+  
+  
+
+  
+ 
 
   return (
     <div>
@@ -99,9 +115,13 @@ const App = () => {
       <Button handleClick={handleBadClick} text='Bad' />
       <h1>Statistics</h1>
       <Statistics good={good} neutral={neutral} bad={bad} />
-
-      <Button handleClick={handleRandomClick} text ='next anecdote' /> 
       <p>{anecdotes[selected]}</p>
+      <p>Has {votes[selected]} votes </p>
+      <Button handleClick={handleVotes} text ='vote' /> 
+      <Button handleClick={handleRandomClick} text ='next anecdote' /> 
+      
+    
+      
     </div>
   )
 }
